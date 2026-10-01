@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checklist - Reunión con Cliente</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 25px;
+        }
+
+        header .header-content {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            margin: 0 0 5px;
+        }
+
+        header p {
+            margin: 0;
+            color: #bbb;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px 50px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .client-data {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        h2 {
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .check-item {
+            display: grid;
+            grid-template-columns: 25px 1fr;
+            gap: 10px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .check-item:last-child {
+            border-bottom: none;
+        }
+
+        .check-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+        }
+
+        .check-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .note {
+            min-height: 65px;
+        }
+
+        button {
+            border: none;
+            border-radius: 8px;
+            padding: 11px 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: #111;
+        }
+
+        .btn-dark {
+            background: #333;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #a52a2a;
+            color: white;
+        }
+
+        .progress-container {
+            position: sticky;
+            bottom: 15px;
+            background: #111;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .progress-text {
+            font-weight: bold;
+        }
+
+        .status {
+            color: #aaa;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 700px) {
+            .client-data {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: auto;
+            }
+
+            header .header-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .progress-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+
+        <div>
+            <h1>Checklist — Reunión con Cliente</h1>
+            <p>Landing · Dominio · Vercel · Google Business · Google Ads</p>
+        </div>
+
+        <div class="buttons">
+            <button class="btn-white" onclick="descargarJSON()">
+                Descargar JSON
+            </button>
+
+            <button class="btn-dark" onclick="cargarJSON()">
+                Cargar JSON
+            </button>
+
+            <button class="btn-danger" onclick="limpiarTodo()">
+                Limpiar
+            </button>
+        </div>
+
+    </div>
+</header>
+
+
+<main>
+
+    <!-- DATOS DEL CLIENTE -->
+
+    <div class="card">
+
+        <h2>Datos de la reunión</h2>
+
+        <div class="client-data">
+
+            <div>
+                <label>Cliente</label>
+
+                <input
+                    id="cliente"
+                    type="text"
+                    placeholder="Nombre del cliente"
+                >
+            </div>
+
+
+            <div>
+                <label>Fecha</label>
+
+                <input
+                    id="fecha"
+                    type="date"
+                >
+            </div>
+
+
+            <div class="full">
+
+                <label>Resumen general</label>
+
+                <textarea
+                    id="resumen"
+                    placeholder="Escribí acá un resumen general de lo que hablaron..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- LANDING -->
+
+    <div class="card">
+
+        <h2>1. Landing Page</h2>
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Definir objetivo de la página
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="¿Qué quiere conseguir con la landing?"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Nombre de la empresa / marca
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Nombre exacto"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Servicios o productos
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="¿Qué servicios o productos quiere mostrar?"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Descripción de la empresa
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Información que quiere mostrar sobre la empresa"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Logo y fotografías
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="¿Tiene logo? ¿Qué fotos tiene?"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Datos de contacto
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Teléfono, WhatsApp, email..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Redes sociales
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Instagram, Facebook, TikTok..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Dirección / zona de atención
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Dirección o zonas donde trabaja"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Horarios
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Días y horarios"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Botones / acciones
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="WhatsApp, llamar, formulario, Instagram..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Diseño / estilo
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Colores, estilo, referencias, páginas que le gustan..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Textos
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="¿Quién proporciona los textos?"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DOMINIO -->
+
+    <div class="card">
+
+        <h2>2. Dominio</h2>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Definir nombre del dominio
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Ejemplo: empresa.com"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Comprobar disponibilidad
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Disponible / no disponible / alternativas"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Registrar dominio a nombre del cliente
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Proveedor y datos necesarios"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Configurar dominio con la landing
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Pendientes de configuración"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Explicar renovación anual
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Costo y fecha de renovación"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- VERCEL -->
+
+    <div class="card">
+
+        <h2>3. Hosting / Vercel</h2>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Publicar landing en Vercel
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Proyecto / cuenta"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Configurar dominio personalizado
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Pendientes"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Aclarar condiciones del hosting
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Plan utilizado / condiciones"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GOOGLE BUSINESS -->
+
+    <div class="card">
+
+        <h2>4. Google Business / Perfil de Negocio</h2>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    ¿Ya tiene Perfil de Negocio de Google?
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Sí / No / verificar"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Utilizar el Gmail del cliente
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Correo que utilizará para administrar el perfil"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Crear / configurar perfil
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Pendientes"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Nombre y categoría
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Nombre y categoría principal"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Dirección / zona de servicio
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Datos"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Teléfono y horarios
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Datos"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Fotos / descripción / servicios
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Material disponible"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Verificación de Google
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Método / estado / pendiente"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Vincular la URL de la landing
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="URL final"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GOOGLE ADS -->
+
+    <div class="card">
+
+        <h2>5. Google Ads — Propuesta</h2>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Proponer campaña de Google Ads
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="¿Le interesa?"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Servicios a promocionar
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Servicios/productos"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Zonas donde quiere aparecer
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Ciudades, barrios, radio..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Presupuesto publicitario
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Cuánto quiere invertir en publicidad"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Objetivo de la campaña
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="WhatsApp, llamadas, formularios, visitas..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Separar costo de publicidad y desarrollo
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Acuerdo"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PRECIO -->
+
+    <div class="card">
+
+        <h2>6. Precio y condiciones</h2>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Precio de la landing
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Monto acordado"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Anticipo del 50%
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Monto y forma de pago"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    50% restante
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Cuándo se abona"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Dominio
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Quién lo paga / cuánto / renovación"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Google Business
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Incluido / adicional"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Google Ads
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Precio de tu servicio + presupuesto de publicidad"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Mantenimiento
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Precio y qué incluye"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ENTREGA -->
+
+    <div class="card">
+
+        <h2>7. Después de entregar la landing</h2>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Definir qué cambios están incluidos
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Anotar límites"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Definir mantenimiento
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Precio, frecuencia y qué incluye"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <input type="checkbox">
+
+            <div>
+
+                <div class="check-title">
+                    Definir quién administra dominio / Google / Vercel
+                </div>
+
+                <textarea
+                    class="note"
+                    placeholder="Responsables y accesos"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- NOTAS -->
+
+    <div class="card">
+
+        <h2>8. Notas libres</h2>
+
+        <textarea
+            id="notas"
+            style="min-height: 200px;"
+            placeholder="Todo lo demás que surja durante la reunión..."
+        ></textarea>
+
+    </div>
+
+
+    <!-- PROGRESO -->
+
+    <div class="progress-container">
+
+        <div>
+
+            <div
+                id="progress"
+                class="progress-text"
+            >
+                0% completado
+            </div>
+
+            <div
+                id="saveStatus"
+                class="status"
+            >
+                Guardado automático activado.
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn-white"
+            onclick="descargarJSON()"
+        >
+            Descargar JSON
+        </button>
+
+    </div>
+
+</main>
+
+
+<script>
+
+const STORAGE_KEY = "reunion_cliente_landing";
+
+
+/*
+    OBTENER DATOS
+*/
+
+function obtenerDatos() {
+
+    const datos = {
+
+        cliente: document.getElementById("cliente").value,
+
+        fecha: document.getElementById("fecha").value,
+
+        resumen: document.getElementById("resumen").value,
+
+        secciones: [],
+
+        notas: document.getElementById("notas").value
+
+    };
+
+
+    document.querySelectorAll(".card").forEach(card => {
+
+        const titulo = card.querySelector("h2");
+
+        if (!titulo) return;
+
+
+        const items = [];
+
+
+        card.querySelectorAll(".check-item").forEach(item => {
+
+            const checkbox =
+                item.querySelector('input[type="checkbox"]');
+
+            const nombre =
+                item.querySelector(".check-title").textContent.trim();
+
+            const nota =
+                item.querySelector(".note").value;
+
+
+            items.push({
+
+                tarea: nombre,
+
+                completado: checkbox.checked,
+
+                nota: nota
+
+            });
+
+        });
+
+
+        if (items.length > 0) {
+
+            datos.secciones.push({
+
+                titulo: titulo.textContent.trim(),
+
+                items: items
+
+            });
+
+        }
+
+    });
+
+
+    return datos;
+
+}
+
+
+/*
+    GUARDAR AUTOMÁTICAMENTE
+*/
+
+function guardarAutomaticamente() {
+
+    const datos = obtenerDatos();
+
+    localStorage.setItem(
+
+        STORAGE_KEY,
+
+        JSON.stringify(datos, null, 2)
+
+    );
+
+
+    actualizarProgreso();
+
+    document.getElementById("saveStatus").textContent =
+        "Guardado automáticamente.";
+
+}
+
+
+/*
+    CARGAR DATOS
+*/
+
+function cargarDatos() {
+
+    const datosGuardados =
+        localStorage.getItem(STORAGE_KEY);
+
+
+    if (!datosGuardados) {
+
+        const hoy =
+            new Date().toISOString().split("T")[0];
+
+        document.getElementById("fecha").value = hoy;
+
+        return;
+
+    }
+
+
+    try {
+
+        const datos =
+            JSON.parse(datosGuardados);
+
+
+        document.getElementById("cliente").value =
+            datos.cliente || "";
+
+
+        document.getElementById("fecha").value =
+            datos.fecha || "";
+
+
+        document.getElementById("resumen").value =
+            datos.resumen || "";
+
+
+        document.getElementById("notas").value =
+            datos.notas || "";
+
+
+        const cards =
+            document.querySelectorAll(".card");
+
+
+        datos.secciones.forEach((seccion, index) => {
+
+            const card = cards[index];
+
+            if (!card) return;
+
+
+            const items =
+                card.querySelectorAll(".check-item");
+
+
+            seccion.items.forEach((itemGuardado, i) => {
+
+                const item = items[i];
+
+                if (!item) return;
+
+
+                item.querySelector(
+                    'input[type="checkbox"]'
+                ).checked =
+                    itemGuardado.completado;
+
+
+                item.querySelector(".note").value =
+                    itemGuardado.nota || "";
+
+            });
+
+        });
+
+
+        actualizarProgreso();
+
+
+    } catch (error) {
+
+        console.error(
+            "Error cargando los datos:",
+            error
+        );
+
+    }
+
+}
+
+
+/*
+    DESCARGAR JSON
+*/
+
+function descargarJSON() {
+
+    const datos = obtenerDatos();
+
+
+    const json =
+        JSON.stringify(datos, null, 2);
+
+
+    const archivo =
+        new Blob(
+            [json],
+            {
+                type: "application/json"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(archivo);
+
+
+    const enlace =
+        document.createElement("a");
+
+
+    const nombreCliente =
+        datos.cliente
+            ? datos.cliente
+                .replace(/[^a-zA-Z0-9]/g, "_")
+            : "cliente";
+
+
+    enlace.href = url;
+
+
+    enlace.download =
+        `reunion_${nombreCliente}.json`;
+
+
+    enlace.click();
+
+
+    URL.revokeObjectURL(url);
+
+
+    document.getElementById("saveStatus").textContent =
+        "JSON descargado correctamente.";
+
+}
+
+
+/*
+    CARGAR JSON DESDE ARCHIVO
+*/
+
+function cargarJSON() {
+
+    const input =
+        document.createElement("input");
+
+
+    input.type = "file";
+
+    input.accept =
+        ".json,application/json";
+
+
+    input.onchange = function(event) {
+
+        const archivo =
+            event.target.files[0];
+
+
+        if (!archivo) return;
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload = function(e) {
+
+            try {
+
+                const datos =
+                    JSON.parse(e.target.result);
+
+
+                localStorage.setItem(
+
+                    STORAGE_KEY,
+
+                    JSON.stringify(datos)
+
+                );
+
+
+                location.reload();
+
+
+            } catch {
+
+                alert(
+                    "El archivo no contiene un JSON válido."
+                );
+
+            }
+
+        };
+
+
+        reader.readAsText(archivo);
+
+    };
+
+
+    input.click();
+
+}
+
+
+/*
+    LIMPIAR
+*/
+
+function limpiarTodo() {
+
+    const confirmar =
+        confirm(
+            "¿Seguro que querés borrar todos los datos?"
+        );
+
+
+    if (!confirmar) return;
+
+
+    localStorage.removeItem(
+        STORAGE_KEY
+    );
+
+
+    location.reload();
+
+}
+
+
+/*
+    PROGRESO
+*/
+
+function actualizarProgreso() {
+
+    const checkboxes =
+        document.querySelectorAll(
+            '.check-item input[type="checkbox"]'
+        );
+
+
+    const total =
+        checkboxes.length;
+
+
+    const completados =
+        [...checkboxes]
+            .filter(
+                checkbox => checkbox.checked
+            )
+            .length;
+
+
+    const porcentaje =
+        total === 0
+            ? 0
+            : Math.round(
+                (completados / total) * 100
+            );
+
+
+    document.getElementById("progress").textContent =
+
+        `${porcentaje}% completado (${completados}/${total})`;
+
+}
+
+
+/*
+    EVENTOS
+*/
+
+document.addEventListener(
+    "input",
+    guardarAutomaticamente
+);
+
+
+document.addEventListener(
+    "change",
+    guardarAutomaticamente
+);
+
+
+/*
+    INICIAR
+*/
+
+cargarDatos();
+
+actualizarProgreso();
+
+</script>
+
+</body>
+</html>
