@@ -1,0 +1,268 @@
+{
+  "cliente": "hugo",
+  "fecha": "2026-10-05",
+  "resumen": "enfoque en ervicio electricos,gas,plomero,aire acondicionado,metalurgica en general",
+  "secciones": [
+    {
+      "titulo": "1. Landing Page",
+      "items": [
+        {
+          "tarea": "Definir objetivo de la página",
+          "completado": true,
+          "nota": "ofrecer lo servicion y el presupuesto gratuito"
+        },
+        {
+          "tarea": "Nombre de la empresa / marca",
+          "completado": false,
+          "nota": "JH Instalaciones y servicios electricos\n"
+        },
+        {
+          "tarea": "Servicios o productos",
+          "completado": false,
+          "nota": "ervicio electricos,gas,plomero,aire acondicionado,metalurgica en general"
+        },
+        {
+          "tarea": "Descripción de la empresa",
+          "completado": false,
+          "nota": "profecionales matriculados con experiencia en brindar soluciones ervicio electricos,gas,plomero,aire acondicionado,metalurgica en general"
+        },
+        {
+          "tarea": "Logo y fotografías",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Datos de contacto",
+          "completado": false,
+          "nota": "2615414229"
+        },
+        {
+          "tarea": "Redes sociales",
+          "completado": false,
+          "nota": "Facebook:Eectricistas Matriculados -Mendoza"
+        },
+        {
+          "tarea": "Dirección / zona de atención",
+          "completado": false,
+          "nota": "todo mdz"
+        },
+        {
+          "tarea": "Horarios",
+          "completado": false,
+          "nota": "24/7"
+        },
+        {
+          "tarea": "Botones / acciones",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Diseño / estilo",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Textos",
+          "completado": false,
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "titulo": "2. Dominio",
+      "items": [
+        {
+          "tarea": "Definir nombre del dominio",
+          "completado": false,
+          "nota": "www.ElectricistaMatriculadoMendoza24/7YServicios.com"
+        },
+        {
+          "tarea": "Comprobar disponibilidad",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Registrar dominio a nombre del cliente",
+          "completado": false,
+          "nota": "Juan Igancio Aguilera"
+        },
+        {
+          "tarea": "Configurar dominio con la landing",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Explicar renovación anual",
+          "completado": false,
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "titulo": "3. Hosting / Vercel",
+      "items": [
+        {
+          "tarea": "Publicar landing en Vercel",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Configurar dominio personalizado",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Aclarar condiciones del hosting",
+          "completado": false,
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "titulo": "4. Google Business / Perfil de Negocio",
+      "items": [
+        {
+          "tarea": "¿Ya tiene Perfil de Negocio de Google?",
+          "completado": false,
+          "nota": "NO"
+        },
+        {
+          "tarea": "Utilizar el Gmail del cliente",
+          "completado": false,
+          "nota": "juaniaguilera2017@gmail.com"
+        },
+        {
+          "tarea": "Crear / configurar perfil",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Nombre y categoría",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Dirección / zona de servicio",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Teléfono y horarios",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Fotos / descripción / servicios",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Verificación de Google",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Vincular la URL de la landing",
+          "completado": false,
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "titulo": "5. Google Ads — Propuesta",
+      "items": [
+        {
+          "tarea": "Proponer campaña de Google Ads",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Servicios a promocionar",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Zonas donde quiere aparecer",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Presupuesto publicitario",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Objetivo de la campaña",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Separar costo de publicidad y desarrollo",
+          "completado": false,
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "titulo": "6. Precio y condiciones",
+      "items": [
+        {
+          "tarea": "Precio de la landing",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Anticipo del 50%",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "50% restante",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Dominio",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Google Business",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Google Ads",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Mantenimiento",
+          "completado": false,
+          "nota": ""
+        }
+      ]
+    },
+    {
+      "titulo": "7. Después de entregar la landing",
+      "items": [
+        {
+          "tarea": "Definir qué cambios están incluidos",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Definir mantenimiento",
+          "completado": false,
+          "nota": ""
+        },
+        {
+          "tarea": "Definir quién administra dominio / Google / Vercel",
+          "completado": false,
+          "nota": ""
+        }
+      ]
+    }
+  ],
+  "notas": ""
+}
